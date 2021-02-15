@@ -1,0 +1,36 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+        <p>
+            Список урезанных значений дат, для которых в наборе есть записи
+            (Работает только с PosterIndexView):
+            {% for d in date_list %}
+                {{ d.year }}
+            {% endfor %}
+        </p>
+{% for poster in posters_pull %}
+    <div>
+        <h2><a href="{% url 'detail' pk=poster.pk %}">{{ poster.name }}</a></h2>
+        <p>{{  poster.about }}</p>
+
+        <p><a href="/board/{{ rubric.pk }}"> {{ rubric.name }}</a></p>
+        <p>{{  poster.published|date:"d.m.Y H:i:s" }}</p>
+        <p><a href="{% url 'edit' pk=poster.pk %}">Изменить</a></p>
+        <p><a href="{% url 'delete_poster' pk=poster.pk %}">Удалить</a></p>
+    </div>
+{% endfor %}
+
+<div>
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">&lt;</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    {% endif %}
+
+    Часть №{{ page.number }} из {{ page.paginator.num_pages }}
+
+    {% if page.has_next %}
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="?page={{ page.next_page_number }}">&lt;</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ poster.title }}{% endblock %}
+
+{% block content %}
+<p>Рубрика: {{ poster.rubric.name }} </p>
+<h2>{{ poster.name }} </h2>
+<p> {{ poster.about }} </p>
+<p> {{ poster.price }} </p>
+{% endblock %}

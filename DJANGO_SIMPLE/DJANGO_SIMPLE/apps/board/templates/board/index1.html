@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta
+            http-equiv  = "Content-Type"
+            content     = "text/html ; charset=UTF-8"
+    >
+</head>
+<body>
+    <h1> Список </h1>
+        {% for poster in posters_pull %}
+    <div>
+        <h2>{{ poster.name }}</h2>
+        <p>{{  poster.about }}</p>
+        <p>{{  poster.published|date:"d.m.Y H:i:s" }}</p>
+    </div>
+        {% endfor %}
+</body>
+</html>

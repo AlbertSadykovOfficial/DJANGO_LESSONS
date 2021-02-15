@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ current_rubric.name }}{% endblock %}
+
+{% block content %}
+<h2> Рубрика: {{ current_rubric.name }} </h2>
+{% for poster in posters_pull %}
+<div>
+    <h2><a href="{% url 'detail' pk=poster.pk %}">{{ poster.name }}</a></h2>
+    <p>{{  poster.about }}</p>
+
+    <p><a href="/board/{{ rubric.pk }}"> {{ rubric.name }}</a></p>
+    <p>{{  poster.published|date:"d.m.Y H:i:s" }}</p>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8"
+    >
+    <title> {{ current_rubric.name }} - Доска Объявлений </title>
+</head>
+<body>
+    <h1> Объявления </h1>
+    <h2> Рубрика: {{ current_rubric.name }} - Доска объявлений </h2>
+    <div>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'add' %}">Добавить</a>
+        {% for rubric in rubrics %}
+        <a href="{% url 'by_rubric' rubric.pk %}"> {{ rubric.name }}</a>
+        {%  endfor %}
+    </div>
+    {% for poster in posters_pull %}
+    <div>
+        <h2>{{ poster.name }}</h2>
+        <p>{{  poster.about }}</p>
+        <p>{{  poster.published|date:"d.m.Y H:i:s" }}</p>
+    </div>
+    {%  endfor %}
+</body>
+</html>
