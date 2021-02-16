@@ -1,0 +1,5 @@
+{% for img in imgs %}
+<div class="image">
+    <p><img src="{% url 'testapp:get' filename=img %}"></p>
+</div>
+{% endfor %}
